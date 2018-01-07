@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md.
  */
 
@@ -20,6 +20,8 @@ import LinkPlugin from '@ckeditor/ckeditor5-link/src/link';
 import ListPlugin from '@ckeditor/ckeditor5-list/src/list';
 import ParagraphPlugin from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import ImageuploadPlugin from '@ckeditor/ckeditor5-upload/src/imageupload';
+import InserttextPlugin from './inserttext';
+import UploadimagePlugin from './uploadimage';
 
 export default class BalloonEditor extends BalloonEditorBase {}
 
@@ -40,7 +42,9 @@ BalloonEditor.build = {
 		LinkPlugin,
 		ListPlugin,
 		ParagraphPlugin,
-		ImageuploadPlugin
+		ImageuploadPlugin,
+		InserttextPlugin,
+		UploadimagePlugin
 	],
 	config: {
 		toolbar: {

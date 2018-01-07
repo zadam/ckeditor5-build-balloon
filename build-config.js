@@ -31,6 +31,8 @@ module.exports = {
 		'@ckeditor/ckeditor5-list/src/list',
 		'@ckeditor/ckeditor5-paragraph/src/paragraph',
 		'@ckeditor/ckeditor5-upload/src/imageupload',
+		'./inserttext',
+		'./uploadimage'
 	],
 
 	// UI language. Language codes follow the https://en.wikipedia.org/wiki/ISO_639-1 format.
