@@ -30,7 +30,9 @@ module.exports = {
 		'@ckeditor/ckeditor5-image/src/imageupload',
 		'@ckeditor/ckeditor5-link/src/link',
 		'@ckeditor/ckeditor5-list/src/list',
-		'@ckeditor/ckeditor5-paragraph/src/paragraph'
+		'@ckeditor/ckeditor5-paragraph/src/paragraph',
+		'./inserttext',
+		'./uploadimage'
 	],
 
 	// Editor config.
@@ -44,7 +46,6 @@ module.exports = {
 				'link',
 				'bulletedList',
 				'numberedList',
-				'imageUpload',
 				'blockQuote',
 				'undo',
 				'redo'
