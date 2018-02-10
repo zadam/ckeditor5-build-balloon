@@ -2,4 +2,4 @@
 
 npm run build
 
-cp build/ckeditor.js ~/trilium/public/libraries/ckeditor/
+cp build/ckeditor.js ~/trilium/src/public/libraries/ckeditor/
