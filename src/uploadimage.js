@@ -79,7 +79,7 @@ class Adapter {
 		const xhr = this.xhr = new XMLHttpRequest();
 
 		const node = noteTree.getCurrentNode();
-		const noteId = node.data.note_id;
+		const noteId = node.data.noteId;
 
 		const url = "/api/images?noteId=" + noteId;
 
