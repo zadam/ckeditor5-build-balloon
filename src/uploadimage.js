@@ -78,7 +78,7 @@ class Adapter {
 	_initRequest() {
 		const xhr = this.xhr = new XMLHttpRequest();
 
-		const node = noteTree.getCurrentNode();
+		const node = glob.getCurrentNode();
 		const noteId = node.data.noteId;
 
 		const url = "/api/images?noteId=" + noteId;
@@ -86,7 +86,7 @@ class Adapter {
 		xhr.open('POST', url, true);
 		xhr.responseType = 'json';
 
-		const headers = server.getHeaders();
+		const headers = glob.getHeaders();
 
 		for (const headerName in headers) {
 			xhr.setRequestHeader(headerName, headers[headerName]);
