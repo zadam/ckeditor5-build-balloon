@@ -1,14 +1,6 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import FileRepository from '@ckeditor/ckeditor5-upload/src/filerepository';
 
-/**
- * A plugin that enables CKFinder uploads in CKEditor 5.
- *
- * Configure the upload URL in
- * {@link module:adapter-ckfinder/uploadadapter~CKFinderAdapterConfig#uploadUrl `ckfinder.uploadUrl`}.
- *
- * @extends module:core/plugin~Plugin
- */
 export default class UploadimagePlugin extends Plugin {
 	/**
 	 * @inheritDoc
@@ -24,8 +16,7 @@ export default class UploadimagePlugin extends Plugin {
 	init() {
 		const url = "/api/image/upload";
 
-		// Register CKFinderAdapter
-		this.editor.plugins.get(FileRepository).createAdapter = loader => new Adapter(loader);
+		this.editor.plugins.get('FileRepository').createUploadAdapter = loader => new Adapter(loader);
 	}
 }
 

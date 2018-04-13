@@ -31,7 +31,6 @@ module.exports = {
 		'@ckeditor/ckeditor5-link/src/link',
 		'@ckeditor/ckeditor5-list/src/list',
 		'@ckeditor/ckeditor5-paragraph/src/paragraph',
-		'./inserttext',
 		'./uploadimage'
 	],
 
