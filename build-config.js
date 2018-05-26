@@ -31,7 +31,8 @@ module.exports = {
 		'@ckeditor/ckeditor5-link/src/link',
 		'@ckeditor/ckeditor5-list/src/list',
 		'@ckeditor/ckeditor5-paragraph/src/paragraph',
-		'./uploadimage'
+		'./uploadimage',
+		'./internallink'
 	],
 
 	// Editor config.
@@ -43,6 +44,7 @@ module.exports = {
 				'bold',
 				'italic',
 				'link',
+				'internallink',
 				'bulletedList',
 				'numberedList',
 				'blockQuote',

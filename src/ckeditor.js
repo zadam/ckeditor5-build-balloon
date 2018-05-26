@@ -21,6 +21,7 @@ import LinkPlugin from '@ckeditor/ckeditor5-link/src/link';
 import ListPlugin from '@ckeditor/ckeditor5-list/src/list';
 import ParagraphPlugin from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import UploadimagePlugin from './uploadimage';
+import InternallinkPlugin from './internallink';
 
 export default class BalloonEditor extends BalloonEditorBase {}
 
@@ -42,7 +43,8 @@ BalloonEditor.build = {
 		LinkPlugin,
 		ListPlugin,
 		ParagraphPlugin,
-		UploadimagePlugin
+		UploadimagePlugin,
+		InternallinkPlugin
 	],
 	config: {
 		toolbar: {
@@ -52,6 +54,7 @@ BalloonEditor.build = {
 				'bold',
 				'italic',
 				'link',
+				'internallink',
 				'bulletedList',
 				'numberedList',
 				'blockQuote',
