@@ -45,6 +45,7 @@
     "@ckeditor/ckeditor5-paragraph": "^10.0.1",
     "@ckeditor/ckeditor5-theme-lark": "^10.1.0",
     "@ckeditor/ckeditor5-upload": "^10.0.1",
+    "@ckeditor/ckeditor5-table": "^10.0.0",
     "babel-minify-webpack-plugin": "^0.3.0",
     "postcss-loader": "^2.0.10",
     "raw-loader": "^0.5.1",
@@ -72,6 +73,6 @@
   },
   "dependencies": {
     "@ckeditor/ckeditor5-core": "^10.0.0",
-	  "@ckeditor/ckeditor5-ui": "latest"
+    "@ckeditor/ckeditor5-ui": "latest"
   }
 }

@@ -9,6 +9,8 @@ import UploadadapterPlugin from '@ckeditor/ckeditor5-adapter-ckfinder/src/upload
 import AutoformatPlugin from '@ckeditor/ckeditor5-autoformat/src/autoformat';
 import BoldPlugin from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import ItalicPlugin from '@ckeditor/ckeditor5-basic-styles/src/italic';
+import StrikethroughPlugin from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
+import UnderlinePlugin from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import BlockquotePlugin from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 import EasyimagePlugin from '@ckeditor/ckeditor5-easy-image/src/easyimage';
 import HeadingPlugin from '@ckeditor/ckeditor5-heading/src/heading';
@@ -20,6 +22,8 @@ import ImageuploadPlugin from '@ckeditor/ckeditor5-image/src/imageupload';
 import LinkPlugin from '@ckeditor/ckeditor5-link/src/link';
 import ListPlugin from '@ckeditor/ckeditor5-list/src/list';
 import ParagraphPlugin from '@ckeditor/ckeditor5-paragraph/src/paragraph';
+import TablePlugin from '@ckeditor/ckeditor5-table/src/table';
+import TabletoolbarPlugin from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import UploadimagePlugin from './uploadimage';
 import InternallinkPlugin from './internallink';
 
@@ -32,6 +36,8 @@ BalloonEditor.build = {
 		AutoformatPlugin,
 		BoldPlugin,
 		ItalicPlugin,
+		StrikethroughPlugin,
+		UnderlinePlugin,
 		BlockquotePlugin,
 		EasyimagePlugin,
 		HeadingPlugin,
@@ -43,6 +49,8 @@ BalloonEditor.build = {
 		LinkPlugin,
 		ListPlugin,
 		ParagraphPlugin,
+		TablePlugin,
+		TabletoolbarPlugin,
 		UploadimagePlugin,
 		InternallinkPlugin
 	],
@@ -53,13 +61,16 @@ BalloonEditor.build = {
 				'|',
 				'bold',
 				'italic',
+				'underline',
+				'strikethrough',
 				'link',
 				'internallink',
 				'bulletedList',
 				'numberedList',
 				'blockQuote',
 				'undo',
-				'redo'
+				'redo',
+				'insertTable'
 			]
 		},
 		image: {
@@ -70,6 +81,13 @@ BalloonEditor.build = {
 				'imageTextAlternative'
 			]
 		},
-		language: 'en'
+		language: 'en',
+		table: {
+			toolbar: [
+				'tableColumn',
+				'tableRow',
+				'mergeTableCells'
+			]
+		}
 	}
 };

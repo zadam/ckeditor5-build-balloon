@@ -20,6 +20,8 @@ module.exports = {
 		'@ckeditor/ckeditor5-autoformat/src/autoformat',
 		'@ckeditor/ckeditor5-basic-styles/src/bold',
 		'@ckeditor/ckeditor5-basic-styles/src/italic',
+		'@ckeditor/ckeditor5-basic-styles/src/strikethrough',
+		'@ckeditor/ckeditor5-basic-styles/src/underline',
 		'@ckeditor/ckeditor5-block-quote/src/blockquote',
 		'@ckeditor/ckeditor5-easy-image/src/easyimage',
 		'@ckeditor/ckeditor5-heading/src/heading',
@@ -31,6 +33,8 @@ module.exports = {
 		'@ckeditor/ckeditor5-link/src/link',
 		'@ckeditor/ckeditor5-list/src/list',
 		'@ckeditor/ckeditor5-paragraph/src/paragraph',
+		'@ckeditor/ckeditor5-table/src/table',
+		'@ckeditor/ckeditor5-table/src/tabletoolbar',
 		'./uploadimage',
 		'./internallink'
 	],
@@ -43,13 +47,16 @@ module.exports = {
 				'|',
 				'bold',
 				'italic',
+				'underline',
+				'strikethrough',
 				'link',
 				'internallink',
 				'bulletedList',
 				'numberedList',
 				'blockQuote',
 				'undo',
-				'redo'
+				'redo',
+				'insertTable'
 			]
 		},
 
@@ -58,6 +65,10 @@ module.exports = {
 		},
 
 		// UI language. Language codes follow the https://en.wikipedia.org/wiki/ISO_639-1 format.
-		language: 'en'
+		language: 'en',
+
+		table: {
+			toolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
+		}
 	}
 };
