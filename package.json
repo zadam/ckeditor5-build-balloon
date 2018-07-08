@@ -1,17 +1,14 @@
 {
   "name": "@ckeditor/ckeditor5-build-balloon",
   "version": "10.1.0",
-  "description": "CKEditor 5 balloon editor build.",
+  "description": "The balloon editor build of CKEditor 5 – the best browser-based rich text editor.",
   "keywords": [
     "ckeditor5-build",
-    "CKEditor",
+    "ckeditor",
     "ckeditor5",
     "ckeditor 5",
-    "WYSIWYG",
-    "WYSIWYM",
-    "text",
-    "rich-text",
-    "richtext",
+    "wysiwyg",
+    "rich text",
     "editor",
     "html",
     "contentEditable",
@@ -21,7 +18,6 @@
     "collaboration",
     "collaborative",
     "real-time",
-    "virtual dom",
     "framework"
   ],
   "main": "./build/ckeditor.js",
@@ -33,8 +29,8 @@
     "@ckeditor/ckeditor5-autoformat": "^10.0.1",
     "@ckeditor/ckeditor5-basic-styles": "^10.0.1",
     "@ckeditor/ckeditor5-block-quote": "^10.0.1",
-    "@ckeditor/ckeditor5-dev-utils": "^9.0.0",
-    "@ckeditor/ckeditor5-dev-webpack-plugin": "^5.0.0",
+    "@ckeditor/ckeditor5-dev-utils": "^10.0.0",
+    "@ckeditor/ckeditor5-dev-webpack-plugin": "^6.0.0",
     "@ckeditor/ckeditor5-easy-image": "^10.0.1",
     "@ckeditor/ckeditor5-editor-balloon": "^10.0.1",
     "@ckeditor/ckeditor5-essentials": "^10.1.0",
@@ -45,16 +41,15 @@
     "@ckeditor/ckeditor5-paragraph": "^10.0.1",
     "@ckeditor/ckeditor5-theme-lark": "^10.1.0",
     "@ckeditor/ckeditor5-upload": "^10.0.1",
-    "@ckeditor/ckeditor5-table": "^10.0.0",
-    "babel-minify-webpack-plugin": "^0.3.0",
-    "postcss-loader": "^2.0.10",
+    "postcss-loader": "^2.1.5",
     "raw-loader": "^0.5.1",
-    "style-loader": "^0.20.3",
-    "webpack": "^3.11.0",
-    "webpack-sources": "1.0.1"
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "webpack": "^4.15.0",
+    "webpack-cli": "^3.0.8"
   },
   "engines": {
-    "node": ">=6.0.0",
+    "node": ">=6.9.0",
     "npm": ">=3.0.0"
   },
   "author": "CKSource (http://cksource.com/)",
@@ -70,9 +65,5 @@
     "create-entry-file": "node bin/create-entry-file.js",
     "build-ckeditor": "sh bin/build-ckeditor.sh",
     "preversion": "npm run build; if [ -n \"$(git status src/ckeditor.js build/ --porcelain)\" ]; then git add -u src/ckeditor.js build/ && git commit -m 'Internal: Build.'; fi"
-  },
-  "dependencies": {
-    "@ckeditor/ckeditor5-core": "^10.0.0",
-    "@ckeditor/ckeditor5-ui": "latest"
   }
 }
