@@ -22,6 +22,10 @@ import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
 import Link from '@ckeditor/ckeditor5-link/src/link';
 import List from '@ckeditor/ckeditor5-list/src/list';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
+import Table from '@ckeditor/ckeditor5-table/src/table';
+import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
+import UploadimagePlugin from './uploadimage';
+import InternalLinkPlugin from './internallink';
 
 export default class BalloonEditor extends BalloonEditorBase {}
 
@@ -42,7 +46,11 @@ BalloonEditor.builtinPlugins = [
 	ImageUpload,
 	Link,
 	List,
-	Paragraph
+	Paragraph,
+	Table,
+	TableToolbar,
+	UploadimagePlugin,
+	InternalLinkPlugin
 ];
 
 // Editor configuration.
@@ -53,13 +61,14 @@ BalloonEditor.defaultConfig = {
 			'|',
 			'bold',
 			'italic',
+			'underline',
+			'strikethrough',
 			'link',
+			'internallink',
 			'bulletedList',
 			'numberedList',
-			'imageUpload',
 			'blockQuote',
-			'undo',
-			'redo'
+			'insertTable'
 		]
 	},
 	image: {
@@ -69,6 +78,9 @@ BalloonEditor.defaultConfig = {
 			'|',
 			'imageTextAlternative'
 		]
+	},
+	table: {
+		toolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
