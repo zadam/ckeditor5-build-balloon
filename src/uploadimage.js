@@ -108,6 +108,9 @@ class Adapter {
 			resolve({
 				default: response.url
 			});
+
+			// only now the <img> tag is inserted, but CKEditor doesn't trigger change event
+			glob.noteChanged();
 		});
 
 		// Upload progress when it's supported.
