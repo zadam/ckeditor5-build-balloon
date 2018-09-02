@@ -31,6 +31,7 @@ import HeadingButtonsUI from '@ckeditor/ckeditor5-heading/src/headingbuttonsui';
 import ParagraphButtonUI from '@ckeditor/ckeditor5-paragraph/src/paragraphbuttonui';
 import UploadimagePlugin from './uploadimage';
 import InternalLinkPlugin from './internallink';
+import MarkdownImportPlugin from './markdownimport';
 
 export default class BalloonEditor extends BalloonEditorBase {}
 
@@ -60,7 +61,8 @@ BalloonEditor.builtinPlugins = [
 	ParagraphButtonUI,
 	HeadingButtonsUI,
 	UploadimagePlugin,
-	InternalLinkPlugin
+	InternalLinkPlugin,
+	MarkdownImportPlugin
 ];
 
 // Editor configuration.
@@ -87,11 +89,13 @@ BalloonEditor.defaultConfig = {
 		toolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
 	},
 	blockToolbar: [
-		'paragraph', 'heading1', 'heading2', 'heading3', 'heading4',
+		'paragraph', 'heading1', 'heading2', 'heading3',
 		'|',
 		'bulletedList', 'numberedList',
 		'|',
-		'blockQuote', 'insertTable'
+		'blockQuote', 'insertTable',
+		'|',
+		'markdownImport'
 	],
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
