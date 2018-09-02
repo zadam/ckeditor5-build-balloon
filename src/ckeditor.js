@@ -87,7 +87,7 @@ BalloonEditor.defaultConfig = {
 		toolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
 	},
 	blockToolbar: [
-		'paragraph', 'heading1', 'heading2', 'heading3',
+		'paragraph', 'heading1', 'heading2', 'heading3', 'heading4',
 		'|',
 		'bulletedList', 'numberedList',
 		'|',
