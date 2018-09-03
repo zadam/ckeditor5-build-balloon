@@ -10,7 +10,7 @@ export default class MarkdownImportPlugin extends Plugin {
 			const view = new ButtonView( locale );
 
 			view.set( {
-				label: 'Markdown Import',
+				label: 'Markdown import from clipboard',
 				icon: markdownIcon,
 				tooltip: true
 			} );
