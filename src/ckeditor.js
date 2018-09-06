@@ -32,6 +32,7 @@ import ParagraphButtonUI from '@ckeditor/ckeditor5-paragraph/src/paragraphbutton
 import UploadimagePlugin from './uploadimage';
 import InternalLinkPlugin from './internallink';
 import MarkdownImportPlugin from './markdownimport';
+import CuttonotePlugin from './cuttonote';
 
 export default class BalloonEditor extends BalloonEditorBase {}
 
@@ -62,7 +63,8 @@ BalloonEditor.builtinPlugins = [
 	HeadingButtonsUI,
 	UploadimagePlugin,
 	InternalLinkPlugin,
-	MarkdownImportPlugin
+	MarkdownImportPlugin,
+	CuttonotePlugin
 ];
 
 // Editor configuration.
@@ -74,7 +76,8 @@ BalloonEditor.defaultConfig = {
 			'underline',
 			'strikethrough',
 			'link',
-			'internallink'
+			'internallink',
+			'cuttonote'
 		]
 	},
 	image: {
