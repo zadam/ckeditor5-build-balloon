@@ -109,6 +109,9 @@ class Adapter {
 				default: response.url
 			});
 
+			// image has been saved as note's child so we need to refresh tree
+			glob.refreshTree();
+
 			// only now the <img> tag is inserted, but CKEditor doesn't trigger change event
 			glob.noteChanged();
 		});
