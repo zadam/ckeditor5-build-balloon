@@ -13,6 +13,7 @@ import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
+import Code from '@ckeditor/ckeditor5-basic-styles/src/code';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage';
 import Heading from '@ckeditor/ckeditor5-heading/src/heading';
@@ -45,6 +46,7 @@ BalloonEditor.builtinPlugins = [
 	Italic,
 	Underline,
 	Strikethrough,
+	Code,
 	BlockQuote,
 	EasyImage,
 	Heading,
@@ -75,6 +77,7 @@ BalloonEditor.defaultConfig = {
 			'italic',
 			'underline',
 			'strikethrough',
+			'code',
 			'link',
 			'internallink',
 			'cuttonote'
