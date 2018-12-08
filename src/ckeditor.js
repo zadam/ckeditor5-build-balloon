@@ -83,8 +83,9 @@ BalloonEditor.defaultConfig = {
 			'strikethrough',
 			'code',
 			'link',
-			'internallink',
-			'cuttonote'
+			'internallink'
+			// cut to note deactivated because of https://github.com/ckeditor/ckeditor5/issues/1384
+			// 'cuttonote'
 		]
 	},
 	image: {
