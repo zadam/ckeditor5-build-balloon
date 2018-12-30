@@ -36,6 +36,7 @@ import UploadimagePlugin from './uploadimage';
 import InternalLinkPlugin from './internallink';
 import MarkdownImportPlugin from './markdownimport';
 import CuttonotePlugin from './cuttonote';
+import Emptyness from './emptyness';
 
 export default class BalloonEditor extends BalloonEditorBase {}
 
@@ -70,7 +71,8 @@ BalloonEditor.builtinPlugins = [
 	UploadimagePlugin,
 	InternalLinkPlugin,
 	MarkdownImportPlugin,
-	CuttonotePlugin
+	CuttonotePlugin,
+	Emptyness
 ];
 
 // Editor configuration.
