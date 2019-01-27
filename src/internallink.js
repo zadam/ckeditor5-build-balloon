@@ -15,6 +15,9 @@ export default class InternalLinkPlugin extends Plugin {
 				tooltip: true
 			} );
 
+            // enable internal link only if the editor is not read only
+			view.bind('isEnabled').to(editor, 'isReadOnly', isReadOnly => !isReadOnly);
+
 			// Callback executed once the image is clicked.
 			view.on( 'execute', () => {
 				glob.showAddLinkDialog();
