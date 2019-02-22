@@ -14,8 +14,6 @@ export default class UploadimagePlugin extends Plugin {
 	}
 
 	init() {
-		const url = "/api/image/upload";
-
 		this.editor.plugins.get('FileRepository').createUploadAdapter = loader => new Adapter(loader);
 	}
 }
@@ -72,7 +70,8 @@ class Adapter {
 		const node = glob.getCurrentNode();
 		const noteId = node.data.noteId;
 
-		const url = "/api/images?noteId=" + noteId;
+		// this must be relative path
+		const url = "../../api/images?noteId=" + noteId;
 
 		xhr.open('POST', url, true);
 		xhr.responseType = 'json';

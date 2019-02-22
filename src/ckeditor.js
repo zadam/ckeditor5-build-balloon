@@ -37,6 +37,7 @@ import InternalLinkPlugin from './internallink';
 import MarkdownImportPlugin from './markdownimport';
 import CuttonotePlugin from './cuttonote';
 import Emptyness from './emptyness';
+import CodeBlock from './codeblock';
 
 export default class BalloonEditor extends BalloonEditorBase {}
 
@@ -72,7 +73,8 @@ BalloonEditor.builtinPlugins = [
 	InternalLinkPlugin,
 	MarkdownImportPlugin,
 	CuttonotePlugin,
-	Emptyness
+	Emptyness,
+	CodeBlock
 ];
 
 // Editor configuration.
@@ -114,7 +116,9 @@ BalloonEditor.defaultConfig = {
 		'|',
 		'bulletedList', 'numberedList',
 		'|',
-		'blockQuote', 'insertTable', 'imageUpload',
+		'blockQuote', 'codeBlock',
+		'|',
+		'insertTable', 'imageUpload',
 		'|',
 		'markdownImport'
 	],
