@@ -90,10 +90,11 @@ class Adapter {
 	 * @param {Function} resolve Callback function to be called when the request is successful.
 	 * @param {Function} reject Callback function to be called when the request cannot be completed.
 	 */
-	_initListeners(resolve, reject) {
+	async _initListeners(resolve, reject) {
 		const xhr = this.xhr;
 		const loader = this.loader;
-		const genericError = 'Cannot upload file:' + ` ${loader.file.name}.`;
+		const file = await loader.file;
+		const genericError = 'Cannot upload file:' + ` ${file.name}.`;
 
 		xhr.addEventListener('error', () => reject(genericError));
 		xhr.addEventListener('abort', () => reject());
@@ -132,10 +133,10 @@ class Adapter {
 	 *
 	 * @private
 	 */
-	_sendRequest() {
+	async _sendRequest() {
 		// Prepare form data.
 		const data = new FormData();
-		data.append('upload', this.loader.file);
+		data.append('upload', await this.loader.file);
 
 		// Send request.
 		this.xhr.send(data);
