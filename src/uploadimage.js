@@ -67,7 +67,7 @@ class Adapter {
 	_initRequest() {
 		const xhr = this.xhr = new XMLHttpRequest();
 
-		const node = glob.getCurrentNode();
+		const node = glob.getActiveNode();
 		const noteId = node.data.noteId;
 
 		// this must be relative path
