@@ -11,6 +11,8 @@ import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapte
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
+import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript';
+import Subscript from '@ckeditor/ckeditor5-basic-styles/src/subscript';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
 import Code from '@ckeditor/ckeditor5-basic-styles/src/code';
@@ -50,6 +52,8 @@ BalloonEditor.builtinPlugins = [
 	Underline,
 	Strikethrough,
 	Code,
+	Superscript,
+	Subscript,
 	BlockQuote,
 	CKFinder,
 	EasyImage,
@@ -84,6 +88,8 @@ BalloonEditor.defaultConfig = {
 			'underline',
 			'strikethrough',
 			'code',
+			'superscript',
+			'subscript',
 			'link',
 			'internallink'
 			// cut to note deactivated because of https://github.com/ckeditor/ckeditor5/issues/1384
