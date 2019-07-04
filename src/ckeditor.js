@@ -34,6 +34,7 @@ import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import BlockToolbar from '@ckeditor/ckeditor5-ui/src/toolbar/block/blocktoolbar';
 import HeadingButtonsUI from '@ckeditor/ckeditor5-heading/src/headingbuttonsui';
 import ParagraphButtonUI from '@ckeditor/ckeditor5-paragraph/src/paragraphbuttonui';
+import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 import UploadimagePlugin from './uploadimage';
 import InternalLinkPlugin from './internallink';
 import MarkdownImportPlugin from './markdownimport';
@@ -74,7 +75,8 @@ BalloonEditor.builtinPlugins = [
 	UploadimagePlugin,
 	InternalLinkPlugin,
 	MarkdownImportPlugin,
-	CuttonotePlugin
+	CuttonotePlugin,
+	TextTransformation
 ];
 
 // Editor configuration.
