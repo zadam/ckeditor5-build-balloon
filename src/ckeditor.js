@@ -37,6 +37,9 @@ import BlockToolbar from '@ckeditor/ckeditor5-ui/src/toolbar/block/blocktoolbar'
 import HeadingButtonsUI from '@ckeditor/ckeditor5-heading/src/headingbuttonsui';
 import ParagraphButtonUI from '@ckeditor/ckeditor5-paragraph/src/paragraphbuttonui';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
+import Font from '@ckeditor/ckeditor5-font/src/font';
+import FontColor from '@ckeditor/ckeditor5-font/src/fontcolor';
+import FontBackgroundColor from '@ckeditor/ckeditor5-font/src/fontbackgroundcolor';
 import UploadimagePlugin from './uploadimage';
 import InternalLinkPlugin from './internallink';
 import MarkdownImportPlugin from './markdownimport';
@@ -80,20 +83,26 @@ BalloonEditor.builtinPlugins = [
 	InternalLinkPlugin,
 	MarkdownImportPlugin,
 	CuttonotePlugin,
-	TextTransformation
+	TextTransformation,
+	Font,
+	FontColor,
+	FontBackgroundColor
 ];
 
 // Editor configuration.
 BalloonEditor.defaultConfig = {
 	toolbar: {
 		items: [
+			'fontSize',
 			'bold',
 			'italic',
 			'underline',
 			'strikethrough',
-			'code',
 			'superscript',
 			'subscript',
+			'fontColor',
+			'fontBackgroundColor',
+			'code',
 			'link',
 			'internallink'
 			// cut to note deactivated because of https://github.com/ckeditor/ckeditor5/issues/1384
