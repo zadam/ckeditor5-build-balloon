@@ -37,6 +37,7 @@
     "@ckeditor/ckeditor5-editor-balloon": "^15.0.0",
     "@ckeditor/ckeditor5-essentials": "^15.0.0",
     "@ckeditor/ckeditor5-heading": "^15.0.0",
+    "@ckeditor/ckeditor5-font": "^15.0.0",
     "@ckeditor/ckeditor5-image": "^15.0.0",
     "@ckeditor/ckeditor5-indent": "^15.0.0",
     "@ckeditor/ckeditor5-link": "^15.0.0",
@@ -82,10 +83,5 @@
   "eslintIgnore": [
     "build/**",
     "packages/**"
-  ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  }
+  ]
 }
