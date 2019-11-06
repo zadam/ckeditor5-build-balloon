@@ -43,6 +43,7 @@
     "@ckeditor/ckeditor5-link": "^15.0.0",
     "@ckeditor/ckeditor5-list": "^15.0.0",
     "@ckeditor/ckeditor5-media-embed": "^15.0.0",
+    "@ckeditor/ckeditor5-mention": "^15.0.0",
     "@ckeditor/ckeditor5-paragraph": "^15.0.0",
     "@ckeditor/ckeditor5-paste-from-office": "^15.0.0",
     "@ckeditor/ckeditor5-table": "^15.0.0",

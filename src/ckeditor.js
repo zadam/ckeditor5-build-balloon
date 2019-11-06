@@ -40,6 +40,8 @@ import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformatio
 import Font from '@ckeditor/ckeditor5-font/src/font';
 import FontColor from '@ckeditor/ckeditor5-font/src/fontcolor';
 import FontBackgroundColor from '@ckeditor/ckeditor5-font/src/fontbackgroundcolor';
+import Mention from '@ckeditor/ckeditor5-mention/src/mention';
+import MentionCustomization from './mention_customization.js'
 import UploadimagePlugin from './uploadimage';
 import InternalLinkPlugin from './internallink';
 import MarkdownImportPlugin from './markdownimport';
@@ -86,7 +88,9 @@ BalloonEditor.builtinPlugins = [
 	TextTransformation,
 	Font,
 	FontColor,
-	FontBackgroundColor
+	FontBackgroundColor,
+	Mention,
+	MentionCustomization
 ];
 
 // Editor configuration.
