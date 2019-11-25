@@ -71,7 +71,7 @@ class Adapter {
 		const noteId = node.data.noteId;
 
 		// this must be relative path
-		const url = "../../api/images?noteId=" + noteId;
+		const url = "api/images?noteId=" + noteId;
 
 		xhr.open('POST', url, true);
 		xhr.responseType = 'json';
