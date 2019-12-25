@@ -39,8 +39,9 @@ import Font from '@ckeditor/ckeditor5-font/src/font';
 import FontColor from '@ckeditor/ckeditor5-font/src/fontcolor';
 import FontBackgroundColor from '@ckeditor/ckeditor5-font/src/fontbackgroundcolor';
 import CodeBlock from '@ckeditor/ckeditor5-code-block/src/codeblock';
+import AttributeAutocomplete from './attributeautocomplete/attributeautocomplete';
 import Mention from '@ckeditor/ckeditor5-mention/src/mention';
-import MentionCustomization from './mention_customization.js'
+import MentionCustomization from './mention_customization'
 import UploadimagePlugin from './uploadimage';
 import InternalLinkPlugin from './internallink';
 import MarkdownImportPlugin from './markdownimport';
@@ -87,6 +88,7 @@ BalloonEditor.builtinPlugins = [
 	FontColor,
 	FontBackgroundColor,
 	CodeBlock,
+	AttributeAutocomplete,
 	Mention,
 	MentionCustomization
 ];
