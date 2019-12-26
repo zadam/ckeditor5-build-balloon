@@ -81,7 +81,7 @@ export function _addAttributeAutocompleteAttributes(baseAttributeAutocompleteDat
  * @protected
  * @param {module:engine/view/element~Element} viewElementOrAttributeAutocomplete
  * @param {String|Object} [data] Mention data to be extended.
- * @returns {module:mention/mention~MentionAttribute}
+ * @returns {module:attributeautocomplete/attributeautocomplete~AttributeAutocompleteAttribute}
  */
 export function _toAttributeAutocompleteAttribute(viewElementOrAttributeAutocomplete, data ) {
 	const dataAttributeAutocomplete = viewElementOrAttributeAutocomplete.getAttribute( 'data-attributeautocomplete' );

@@ -252,7 +252,7 @@ export default class AttributeAutocompleteUI extends Plugin {
 			this._hideUIAndRemoveMarker();
 
 			editor.execute( 'attributeautocomplete', {
-				mention: item,
+				attributeautocomplete: item,
 				text: item.text,
 				marker,
 				range
@@ -371,7 +371,7 @@ export default class AttributeAutocompleteUI extends Plugin {
 			const selection = editor.model.document.selection;
 			const focus = selection.focus;
 
-			if ( hasExistingMention( focus ) ) {
+			if ( hasExistingAttributeAutocomplete( focus ) ) {
 				this._hideUIAndRemoveMarker();
 
 				return;
@@ -705,7 +705,7 @@ function isHandledKey( keyCode ) {
 //
 // @param {module:engine/model/position~Position} position.
 // @returns {Boolean}
-function hasExistingMention( position ) {
+function hasExistingAttributeAutocomplete( position ) {
 	// The text watcher listens only to changed range in selection - so the selection attributes are not yet available
 	// and you cannot use selection.hasAttribute( 'mention' ) just yet.
 	// See https://github.com/ckeditor/ckeditor5-engine/issues/1723.

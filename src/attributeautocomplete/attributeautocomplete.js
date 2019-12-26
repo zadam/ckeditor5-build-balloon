@@ -33,7 +33,7 @@ export default class AttributeAutocomplete extends Plugin {
 	 *
 	 * @param {module:engine/view/element~Element} viewElement
 	 * @param {String|Object} [data] Additional data to be stored in the attributeautocomplete attribute.
-	 * @returns {module:attributeautocomplete/attributeautocomplete~MentionAttribute}
+	 * @returns {module:attributeautocomplete/attributeautocomplete~AttributeAutocompleteAttribute}
 	 */
 	toAttributeAutocompleteAttribute(viewElement, data ) {
 		return _toAttributeAutocompleteAttribute( viewElement, data );
