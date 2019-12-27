@@ -132,21 +132,43 @@ function preventPartialAttributeAutocompleteDowncast( dispatcher ) {
 // @param {module:engine/view/downcastwriter~DowncastWriter} viewWriter
 // @returns {module:engine/view/attributeelement~AttributeElement}
 function createViewAttributeAutocompleteElement( attributeAutocomplete, viewWriter ) {
-	if ( !attributeAutocomplete ) {
+	// Do not convert empty attributes (lack of value means no mention).
+	if (!attributeAutocomplete) {
 		return;
 	}
-
-	const attributes = {
-		class: 'attributeautocomplete',
-		'data-attributeautocomplete': attributeAutocomplete.id
-	};
 
 	const options = {
 		id: attributeAutocomplete._uid,
 		priority: 20
 	};
 
-	return viewWriter.createAttributeElement( 'span', attributes, options );
+	const attributes = {
+		'href': '#' + attributeAutocomplete.path
+	};
+
+	const container = viewWriter.createContainerElement('span', {});
+	const link = viewWriter.createAttributeElement('a', attributes, options);
+
+	viewWriter.insert( viewWriter.createPositionAt( container, 0 ), viewWriter.createText('#') );
+	viewWriter.insert( viewWriter.createPositionAt( container, 1 ), link );
+
+	return container;
+
+	// if ( !attributeAutocomplete ) {
+	// 	return;
+	// }
+	//
+	// const attributes = {
+	// 	class: 'attributeautocomplete',
+	// 	'data-attributeautocomplete': attributeAutocomplete.id
+	// };
+	//
+	// const options = {
+	// 	id: attributeAutocomplete._uid,
+	// 	priority: 20
+	// };
+	//
+	// return viewWriter.createAttributeElement( 'span', attributes, options );
 }
 
 // Model post-fixer that disallows typing with selection when the selection is placed after the text node with the mention attribute or
