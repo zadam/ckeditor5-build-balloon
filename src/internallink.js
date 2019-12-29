@@ -1,5 +1,5 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
-import internalLinkIcon from './trilium.svg';
+import internalLinkIcon from './icons/trilium.svg';
 import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 
 export default class InternalLinkPlugin extends Plugin {

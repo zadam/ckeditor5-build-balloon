@@ -1,5 +1,5 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
-import scissorsIcon from './scissors.svg';
+import scissorsIcon from './icons/scissors.svg';
 import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 import HtmlDataProcessor from '@ckeditor/ckeditor5-engine/src/dataprocessor/htmldataprocessor';
 

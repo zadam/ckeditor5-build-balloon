@@ -45,6 +45,7 @@ import UploadimagePlugin from './uploadimage';
 import InternalLinkPlugin from './internallink';
 import MarkdownImportPlugin from './markdownimport';
 import CuttonotePlugin from './cuttonote';
+import IncludeNote from './includenote';
 
 export default class BalloonEditor extends BalloonEditorBase {}
 
@@ -88,7 +89,8 @@ BalloonEditor.builtinPlugins = [
 	FontBackgroundColor,
 	CodeBlock,
 	Mention,
-	MentionCustomization
+	MentionCustomization,
+	IncludeNote
 ];
 
 // Editor configuration.
@@ -135,7 +137,7 @@ BalloonEditor.defaultConfig = {
 		'|',
 		'bulletedList', 'numberedList', 'todoList',
 		'|',
-		'blockQuote', 'codeBlock', 'insertTable', 'imageUpload',
+		'blockQuote', 'codeBlock', 'insertTable', 'includeNote', 'imageUpload',
 		'|',
 		'markdownImport'
 	],
