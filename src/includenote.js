@@ -89,6 +89,7 @@ class IncludeNoteEditing extends Plugin {
 		conversion.for( 'dataDowncast' ).elementToElement( {
 			model: 'includeNote',
 			view: ( modelElement, viewWriter ) => {
+				// it would make sense here to downcast to <iframe>, with this even HTML export can support note inclusion
 				return viewWriter.createContainerElement('section', {
 					class: 'include-note',
 					'data-note-id': modelElement.getAttribute('noteId')
@@ -98,10 +99,25 @@ class IncludeNoteEditing extends Plugin {
 		conversion.for( 'editingDowncast' ).elementToElement( {
 			model: 'includeNote',
 			view: ( modelElement, viewWriter ) => {
+
+				const noteId = modelElement.getAttribute('noteId');
+
 				const section = viewWriter.createContainerElement( 'section', {
 					class: 'include-note',
-					'data-note-id': modelElement.getAttribute('noteId')
+					'data-note-id': noteId
 				} );
+
+				const includedNoteWrapper = viewWriter.createUIElement( 'div', {
+					class: 'include-note-wrapper'
+				}, function( domDocument ) {
+					const domElement = this.toDomElement( domDocument );
+
+					glob.loadIncludedNote(noteId, domElement);
+
+					return domElement;
+				} );
+
+				viewWriter.insert( viewWriter.createPositionAt( section, 0 ), includedNoteWrapper );
 
 				return toWidget( section, viewWriter, { label: 'include note widget' } );
 			}
