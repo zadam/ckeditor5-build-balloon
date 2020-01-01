@@ -108,9 +108,8 @@ BalloonEditor.defaultConfig = {
 			'fontBackgroundColor',
 			'code',
 			'link',
-			'internallink'
-			// cut to note deactivated because of https://github.com/ckeditor/ckeditor5/issues/1384
-			// 'cuttonote'
+			'internallink',
+			'cuttonote'
 		]
 	},
 	image: {

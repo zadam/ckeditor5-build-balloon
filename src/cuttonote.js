@@ -17,7 +17,7 @@ export default class CutToNotePlugin extends Plugin {
 			} );
 
 			// Callback executed once the image is clicked.
-			view.on('execute', window.glob.createNoteInto);
+			view.on('execute', window.glob.cutIntoNote);
 
 			return view;
 		} );
