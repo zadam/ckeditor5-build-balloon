@@ -17,7 +17,12 @@ export default class CutToNotePlugin extends Plugin {
 			} );
 
 			// Callback executed once the image is clicked.
-			view.on('execute', window.glob.cutIntoNote);
+			view.on('execute', () => {
+				const editorEl = this.editor.editing.view.getDomRoot();
+				const component = glob.getComponentByEl(editorEl);
+
+				component.triggerCommand('cutIntoNote');
+			});
 
 			return view;
 		} );
