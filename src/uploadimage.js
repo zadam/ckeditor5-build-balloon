@@ -67,8 +67,7 @@ class Adapter {
 	_initRequest() {
 		const xhr = this.xhr = new XMLHttpRequest();
 
-		const node = glob.getActiveNode();
-		const noteId = node.data.noteId;
+		const {noteId} = glob.getActiveTabNote();
 
 		// this must be relative path
 		const url = "api/images?noteId=" + noteId;
@@ -108,9 +107,6 @@ class Adapter {
 			resolve({
 				default: response.url
 			});
-
-			// image has been saved as note's child so we need to refresh tree
-			glob.refreshTree();
 
 			// only now the <img> tag is inserted, but CKEditor doesn't trigger change event
 			glob.noteChanged();

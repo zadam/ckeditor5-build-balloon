@@ -4,7 +4,6 @@ import Widget from '@ckeditor/ckeditor5-widget/src/widget';
 import Command from '@ckeditor/ckeditor5-core/src/command';
 import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 import noteIcon from './icons/note.svg';
-import uid from '@ckeditor/ckeditor5-utils/src/uid';
 
 export default class IncludeNote extends Plugin {
 	static get requires() {
@@ -72,7 +71,8 @@ class IncludeNoteEditing extends Plugin {
 	}
 
 	_defineConverters() {
-		const conversion = this.editor.conversion;
+		const editor = this.editor;
+		const conversion = editor.conversion;
 
 		// <includeNote> converters
 		conversion.for( 'upcast' ).elementToElement( {
@@ -112,7 +112,10 @@ class IncludeNoteEditing extends Plugin {
 				}, function( domDocument ) {
 					const domElement = this.toDomElement( domDocument );
 
-					glob.loadIncludedNote(noteId, domElement);
+					const editorEl = editor.editing.view.getDomRoot();
+					const component = glob.getComponentByEl(editorEl);
+
+					component.loadIncludedNote(noteId, domElement);
 
 					return domElement;
 				} );
@@ -127,15 +130,10 @@ class IncludeNoteEditing extends Plugin {
 
 class InsertIncludeNoteCommand extends Command {
 	execute() {
-		glob.showIncludeNoteDialog(noteId => {
-			this.editor.model.change( writer => {
-				// Insert <includeNote>*</includeNote> at the current selection position
-				// in a way that will result in creating a valid model structure
-				this.editor.model.insertContent(writer.createElement('includeNote', {
-					noteId: noteId
-				}));
-			} );
-		});
+		const editorEl = this.editor.editing.view.getDomRoot();
+		const component = glob.getComponentByEl(editorEl);
+
+		component.triggerCommand('addIncludeNoteToText');
 	}
 
 	refresh() {
