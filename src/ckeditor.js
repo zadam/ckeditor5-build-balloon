@@ -48,6 +48,7 @@ import InternalLinkPlugin from './internallink';
 import MarkdownImportPlugin from './markdownimport';
 import CuttonotePlugin from './cuttonote';
 import IncludeNote from './includenote';
+import ReferenceLink from './referencelink';
 
 export default class BalloonEditor extends BalloonEditorBase {}
 
@@ -94,7 +95,8 @@ BalloonEditor.builtinPlugins = [
 	CodeBlock,
 	Mention,
 	MentionCustomization,
-	IncludeNote
+	IncludeNote,
+	ReferenceLink
 ];
 
 // Editor configuration.
