@@ -115,7 +115,19 @@ class ReferenceLinkEditing extends Plugin {
 
 			const noteId = notePath.split('/').pop();
 
-			function setTitle(title) {
+			function setTitle(note) {
+				let title;
+
+				if (!note) {
+					title = '[missing]';
+				}
+				else if (!note.isDeleted) {
+					title = note.title;
+				}
+				else {
+					title = note.isErased ? '[erased]' : `${note.title} (deleted)`;
+				}
+
 				const innerText = viewWriter.createText(title);
 				viewWriter.insert( viewWriter.createPositionAt( referenceLinkView, 0 ), innerText );
 			}
@@ -123,13 +135,11 @@ class ReferenceLinkEditing extends Plugin {
 			const note = glob.treeCache.getNoteFromCache(noteId);
 
 			if (note) {
-				setTitle(note.title);
+				setTitle(note);
 			}
 			else {
 				// fallback, could happen e.g. if note is deleted
-				glob.treeCache.getNote(noteId, true).then(note => {
-					setTitle(note ? note.title : '[missing]');
-				});
+				glob.treeCache.getNote(noteId, true).then(setTitle);
 			}
 
 			return referenceLinkView;
