@@ -1,9 +1,12 @@
-import Command from "@ckeditor/ckeditor5-core/src/command";
+import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
+import Command from '@ckeditor/ckeditor5-core/src/command';
 
-export default function MentionCustomization(editor) {
-	setTimeout(() => {
+export default class MentionCustomization extends Plugin {
+	afterInit() {
+		const editor = this.editor;
+		// override standard mention command (see https://github.com/ckeditor/ckeditor5/issues/6470)
 		editor.commands.add('mention', new CustomMentionCommand(editor));
-	}, 1000);
+	}
 }
 
 class CustomMentionCommand extends Command {

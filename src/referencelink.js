@@ -13,15 +13,20 @@ class ReferenceLinkCommand extends Command {
 	execute( { notePath } ) {
 		const editor = this.editor;
 
-		editor.model.change( writer => {
-			const placeholder = writer.createElement( 'reference', { notePath: notePath } );
+		const noteId = notePath.split('/').pop();
 
-			// ... and insert it into the document.
-			editor.model.insertContent( placeholder );
+		// make sure the referenced note is in cache before adding reference element
+		glob.treeCache.getNote(noteId, true).then(() => {
+			editor.model.change(writer => {
+				const placeholder = writer.createElement('reference', {notePath: notePath});
 
-			// Put the selection on the inserted element.
-			writer.setSelection( placeholder, 'on' );
-		} );
+				// ... and insert it into the document.
+				editor.model.insertContent(placeholder);
+
+				// Put the selection on the inserted element.
+				writer.setSelection(placeholder, 'on');
+			});
+		});
 	}
 
 	refresh() {
@@ -110,10 +115,22 @@ class ReferenceLinkEditing extends Plugin {
 
 			const noteId = notePath.split('/').pop();
 
-			glob.treeCache.getNote(noteId).then(note => {
-				const innerText = viewWriter.createText(note.title);
+			function setTitle(title) {
+				const innerText = viewWriter.createText(title);
 				viewWriter.insert( viewWriter.createPositionAt( referenceLinkView, 0 ), innerText );
-			});
+			}
+
+			const note = glob.treeCache.getNoteFromCache(noteId);
+
+			if (note) {
+				setTitle(note.title);
+			}
+			else {
+				// fallback, could happen e.g. if note is deleted
+				glob.treeCache.getNote(noteId, true).then(note => {
+					setTitle(note ? note.title : '[missing]');
+				});
+			}
 
 			return referenceLinkView;
 		}
