@@ -1,5 +1,5 @@
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
-import { toWidget, viewToModelPositionOutsideModelElement } from '@ckeditor/ckeditor5-widget/src/utils';
+import {toWidget, viewToModelPositionOutsideModelElement} from '@ckeditor/ckeditor5-widget/src/utils';
 import Widget from '@ckeditor/ckeditor5-widget/src/widget';
 import Command from '@ckeditor/ckeditor5-core/src/command';
 
@@ -24,7 +24,7 @@ class ReferenceLinkCommand extends Command {
 				editor.model.insertContent(placeholder);
 
 				// Put the selection on the inserted element.
-				writer.setSelection(placeholder, 'on');
+				writer.setSelection(placeholder, 'after');
 			});
 		});
 	}
@@ -33,9 +33,7 @@ class ReferenceLinkCommand extends Command {
 		const model = this.editor.model;
 		const selection = model.document.selection;
 
-		const isAllowed = model.schema.checkChild( selection.focus.parent, 'reference' );
-
-		this.isEnabled = isAllowed;
+		this.isEnabled = model.schema.checkChild(selection.focus.parent, 'reference');
 	}
 }
 
@@ -107,40 +105,32 @@ class ReferenceLinkEditing extends Plugin {
 		function createReferenceView(modelItem, viewWriter) {
 			const notePath = modelItem.getAttribute( 'notePath' );
 
-			const referenceLinkView = viewWriter.createContainerElement( 'a', {
+			const referenceLinkView = viewWriter.createUIElement('a', {
 				href: '#' + notePath,
 				class: 'reference-link',
 				'data-note-path': notePath,
-			} );
+			}, function( domDocument ) {
+				const domElement = this.toDomElement( domDocument );
+				const noteId = notePath.split('/').pop();
 
-			const noteId = notePath.split('/').pop();
+				glob.treeCache.getNote(noteId, true).then(note => {
+					let title;
 
-			function setTitle(note) {
-				let title;
+					if (!note) {
+						title = '[missing]';
+					}
+					else if (!note.isDeleted) {
+						title = note.title;
+					}
+					else {
+						title = note.isErased ? '[erased]' : `${note.title} (deleted)`;
+					}
 
-				if (!note) {
-					title = '[missing]';
-				}
-				else if (!note.isDeleted) {
-					title = note.title;
-				}
-				else {
-					title = note.isErased ? '[erased]' : `${note.title} (deleted)`;
-				}
+					$(domElement).text(title);
+				});
 
-				const innerText = viewWriter.createText(title);
-				viewWriter.insert( viewWriter.createPositionAt( referenceLinkView, 0 ), innerText );
-			}
-
-			const note = glob.treeCache.getNoteFromCache(noteId);
-
-			if (note) {
-				setTitle(note);
-			}
-			else {
-				// fallback, could happen e.g. if note is deleted
-				glob.treeCache.getNote(noteId, true).then(setTitle);
-			}
+				return domElement;
+			});
 
 			return referenceLinkView;
 		}
