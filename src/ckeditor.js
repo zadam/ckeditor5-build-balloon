@@ -42,6 +42,8 @@ import FontColor from '@ckeditor/ckeditor5-font/src/fontcolor';
 import FontBackgroundColor from '@ckeditor/ckeditor5-font/src/fontbackgroundcolor';
 import CodeBlock from '@ckeditor/ckeditor5-code-block/src/codeblock';
 import Mention from '@ckeditor/ckeditor5-mention/src/mention';
+import Indent from '@ckeditor/ckeditor5-indent/src/indent';
+import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock';
 import MentionCustomization from './mention_customization.js'
 import UploadimagePlugin from './uploadimage';
 import InternalLinkPlugin from './internallink';
@@ -81,6 +83,8 @@ BalloonEditor.builtinPlugins = [
 	TableToolbar,
 	TableProperties,
 	TableCellProperties,
+	Indent,
+	IndentBlock,
 	BlockToolbar,
 	ParagraphButtonUI,
 	HeadingButtonsUI,
@@ -142,8 +146,11 @@ BalloonEditor.defaultConfig = {
 		'|',
 		'bulletedList', 'numberedList', 'todoList',
 		'|',
-		'blockQuote', 'codeBlock', 'insertTable', 'includeNote', 'imageUpload',
+		'blockQuote', 'codeBlock', 'insertTable', 'includeNote',
 		'|',
+		'outdent', 'indent',
+		'|',
+		'imageUpload',
 		'markdownImport'
 	],
 	table: {

@@ -86,51 +86,68 @@ class ReferenceLinkEditing extends Plugin {
 			}
 		} );
 
+		function getTitle(note) {
+			if (!note) {
+				return '[missing]';
+			}
+			else if (!note.isDeleted) {
+				return note.title;
+			}
+			else {
+				return note.isErased ? '[erased]' : `${note.title} (deleted)`;
+			}
+		}
+
 		conversion.for( 'editingDowncast' ).elementToElement( {
 			model: 'reference',
 			view: ( modelItem, viewWriter ) => {
-				const widgetElement = createReferenceView( modelItem, viewWriter );
+				const notePath = modelItem.getAttribute( 'notePath' );
+
+				const referenceLinkView = viewWriter.createUIElement('a', {
+					href: '#' + notePath,
+					class: 'reference-link',
+					'data-note-path': notePath,
+				}, function( domDocument ) {
+					const domElement = this.toDomElement( domDocument );
+					const noteId = notePath.split('/').pop();
+
+					glob.treeCache.getNote(noteId, true).then(note => $(domElement).text(getTitle(note)));
+
+					return domElement;
+				});
 
 				// Enable widget handling on a reference element inside the editing view.
-				return toWidget( widgetElement, viewWriter );
+				return toWidget( referenceLinkView, viewWriter );
 			}
 		} );
 
 		conversion.for( 'dataDowncast' ).elementToElement( {
 			model: 'reference',
-			view: createReferenceView
+			view: ( modelItem, viewWriter ) => {
+				const notePath = modelItem.getAttribute( 'notePath' );
+
+				const referenceLinkView = viewWriter.createContainerElement( 'a', {
+					href: '#' + notePath,
+					class: 'reference-link',
+					'data-note-path': notePath,
+				} );
+
+				const noteId = notePath.split('/').pop();
+				// needs to be sync
+				const note = glob.treeCache.getNoteFromCache(noteId);
+
+				if (note) {
+					const innerText = viewWriter.createText(getTitle(note));
+					viewWriter.insert(viewWriter.createPositionAt(referenceLinkView, 0), innerText);
+				}
+
+				return referenceLinkView;
+			}
 		} );
 
 		// Helper method for both downcast converters.
 		function createReferenceView(modelItem, viewWriter) {
-			const notePath = modelItem.getAttribute( 'notePath' );
 
-			const referenceLinkView = viewWriter.createUIElement('a', {
-				href: '#' + notePath,
-				class: 'reference-link',
-				'data-note-path': notePath,
-			}, function( domDocument ) {
-				const domElement = this.toDomElement( domDocument );
-				const noteId = notePath.split('/').pop();
-
-				glob.treeCache.getNote(noteId, true).then(note => {
-					let title;
-
-					if (!note) {
-						title = '[missing]';
-					}
-					else if (!note.isDeleted) {
-						title = note.title;
-					}
-					else {
-						title = note.isErased ? '[erased]' : `${note.title} (deleted)`;
-					}
-
-					$(domElement).text(title);
-				});
-
-				return domElement;
-			});
 
 			return referenceLinkView;
 		}
