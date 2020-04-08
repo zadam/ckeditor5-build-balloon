@@ -72,7 +72,8 @@ class ReferenceLinkEditing extends Plugin {
 	}
 
 	_defineConverters() {
-		const conversion = this.editor.conversion;
+		const editor = this.editor;
+		const conversion = editor.conversion;
 
 		conversion.for( 'upcast' ).elementToElement( {
 			view: {
@@ -85,18 +86,6 @@ class ReferenceLinkEditing extends Plugin {
 				return modelWriter.createElement( 'reference', { notePath: notePath } );
 			}
 		} );
-
-		function getTitle(note) {
-			if (!note) {
-				return '[missing]';
-			}
-			else if (!note.isDeleted) {
-				return note.title;
-			}
-			else {
-				return note.isErased ? '[erased]' : `${note.title} (deleted)`;
-			}
-		}
 
 		conversion.for( 'editingDowncast' ).elementToElement( {
 			model: 'reference',
@@ -111,7 +100,10 @@ class ReferenceLinkEditing extends Plugin {
 					const domElement = this.toDomElement( domDocument );
 					const noteId = notePath.split('/').pop();
 
-					glob.treeCache.getNote(noteId, true).then(note => $(domElement).text(getTitle(note)));
+					const editorEl = editor.editing.view.getDomRoot();
+					const component = glob.getComponentByEl(editorEl);
+
+					component.loadReferenceLinkTitle(noteId, $(domElement));
 
 					return domElement;
 				});
@@ -137,19 +129,12 @@ class ReferenceLinkEditing extends Plugin {
 				const note = glob.treeCache.getNoteFromCache(noteId);
 
 				if (note) {
-					const innerText = viewWriter.createText(getTitle(note));
+					const innerText = viewWriter.createText(note.title);
 					viewWriter.insert(viewWriter.createPositionAt(referenceLinkView, 0), innerText);
 				}
 
 				return referenceLinkView;
 			}
 		} );
-
-		// Helper method for both downcast converters.
-		function createReferenceView(modelItem, viewWriter) {
-
-
-			return referenceLinkView;
-		}
 	}
 }

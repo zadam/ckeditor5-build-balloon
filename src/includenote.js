@@ -115,7 +115,7 @@ class IncludeNoteEditing extends Plugin {
 					const editorEl = editor.editing.view.getDomRoot();
 					const component = glob.getComponentByEl(editorEl);
 
-					component.loadIncludedNote(noteId, domElement);
+					component.loadIncludedNote(noteId, $(domElement));
 
 					return domElement;
 				} );
