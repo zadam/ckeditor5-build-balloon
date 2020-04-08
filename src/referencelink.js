@@ -11,6 +11,10 @@ export default class ReferenceLink extends Plugin {
 
 class ReferenceLinkCommand extends Command {
 	execute( { notePath } ) {
+		if (!notePath || !notePath.trim()) {
+			return;
+		}
+
 		const editor = this.editor;
 
 		const noteId = notePath.split('/').pop();
