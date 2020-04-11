@@ -63,7 +63,7 @@ class IncludeNoteEditing extends Plugin {
 			// Behaves like a self-contained object (e.g. an image).
 			isObject: true,
 
-			allowAttributes: 'noteId',
+			allowAttributes: ['noteId', 'boxSize'],
 
 			// Allow in places where other blocks are allowed (e.g. directly in the root).
 			allowWhere: '$block'
@@ -78,7 +78,8 @@ class IncludeNoteEditing extends Plugin {
 		conversion.for( 'upcast' ).elementToElement( {
 			model: ( viewElement, modelWriter ) => {
 				return modelWriter.createElement( 'includeNote', {
-					noteId: viewElement.getAttribute('data-note-id')
+					noteId: viewElement.getAttribute('data-note-id'),
+					boxSize: viewElement.getAttribute('data-box-size'),
 				} );
 			},
 			view: {
@@ -92,7 +93,8 @@ class IncludeNoteEditing extends Plugin {
 				// it would make sense here to downcast to <iframe>, with this even HTML export can support note inclusion
 				return viewWriter.createContainerElement('section', {
 					class: 'include-note',
-					'data-note-id': modelElement.getAttribute('noteId')
+					'data-note-id': modelElement.getAttribute('noteId'),
+					'data-box-size': modelElement.getAttribute('boxSize'),
 				});
 			}
 		} );
@@ -101,10 +103,12 @@ class IncludeNoteEditing extends Plugin {
 			view: ( modelElement, viewWriter ) => {
 
 				const noteId = modelElement.getAttribute('noteId');
+				const boxSize = modelElement.getAttribute('boxSize');
 
 				const section = viewWriter.createContainerElement( 'section', {
-					class: 'include-note',
-					'data-note-id': noteId
+					class: 'include-note box-size-' + boxSize,
+					'data-note-id': noteId,
+					'data-box-size': boxSize
 				} );
 
 				const includedNoteWrapper = viewWriter.createUIElement( 'div', {
