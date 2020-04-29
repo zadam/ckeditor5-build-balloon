@@ -44,6 +44,8 @@ import CodeBlock from '@ckeditor/ckeditor5-code-block/src/codeblock';
 import Mention from '@ckeditor/ckeditor5-mention/src/mention';
 import Indent from '@ckeditor/ckeditor5-indent/src/indent';
 import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock';
+import SelectAll from '@ckeditor/ckeditor5-select-all/src/selectall';
+import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed';
 import MentionCustomization from './mention_customization.js'
 import UploadimagePlugin from './uploadimage';
 import InternalLinkPlugin from './internallink';
@@ -97,6 +99,7 @@ BalloonEditor.builtinPlugins = [
 	FontColor,
 	FontBackgroundColor,
 	CodeBlock,
+	SelectAll,
 	Mention,
 	MentionCustomization,
 	IncludeNote,
