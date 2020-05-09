@@ -11,17 +11,34 @@ export default class MentionCustomization extends Plugin {
 
 class CustomMentionCommand extends Command {
 	execute(options) {
-		const model = this.editor.model;
-		const document = model.document;
-		const selection = document.selection;
+		const {model} = this.editor;
+		const {document} = model;
+		const {selection} = document;
+		const {mention} = options;
 
 		const range = options.range || selection.getFirstRange();
+
+		if (mention.id === 'create') {
+			const editorEl = this.editor.editing.view.getDomRoot();
+			const component = glob.getComponentByEl(editorEl);
+
+			component.createNoteForReferenceLink(mention.title).then(notePath => {
+				this.insertReference(range, notePath);
+			});
+		}
+		else {
+			this.insertReference(range, options.mention.path);
+		}
+	}
+
+	insertReference(range, path) {
+		const {model} = this.editor;
 
 		model.change(writer => {
 			// override the selection or at least the beginning @ character
 			model.insertContent(writer.createText(''), range);
 
-			this.editor.execute('referenceLink', {notePath: options.mention.path});
+			this.editor.execute('referenceLink', {notePath: path});
 		});
 	}
 }
