@@ -1,5 +1,6 @@
-CKEditor 5 balloon editor build
-==============================================
+# This repository is deprecated and archived
+
+This repo followed old CKEditor 5 repo-per-package. New style mono-repo is now in https://github.com/zadam/trilium-ckeditor5
 
 [![npm version](https://badge.fury.io/js/%40ckeditor%2Fckeditor5-build-balloon.svg)](https://www.npmjs.com/package/@ckeditor/ckeditor5-build-balloon)
 [![Build Status](https://travis-ci.org/ckeditor/ckeditor5-build-balloon.svg?branch=master)](https://travis-ci.org/ckeditor/ckeditor5-build-balloon)
